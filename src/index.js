@@ -1,4 +1,17 @@
-import numeral from "numeral";
+import { getUsers } from "./api/userApi";
+const tbody = document.querySelector("#body");
 
-const courseValue = numeral(1000).format("$0,0.00");
-console.log(`I would pay ${courseValue} for this awesome course`);
+getUsers("/users").then((response) => {
+  console.log(response);
+  response.map((user) => {
+    tbody.innerHTML += `
+    <tr>
+    <td><button>Delete</button></td>
+    <td>${user.id}</td>
+    <td>${user.firstName}</td>
+    <td>${user.lastName}</td>
+    <td>${user.email}</td>
+    </tr>
+    `;
+  });
+});
