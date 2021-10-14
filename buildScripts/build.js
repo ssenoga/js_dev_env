@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 process.env.NODE_ENV = "production";
 
-webpack(webpackConfig).run((err, stats) => {
+webpack(webpackConfig).run((err) => {
   if (err) {
     console.log(chalk.red(err));
   }
